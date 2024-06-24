@@ -6,12 +6,13 @@
         <h2 class="card-title">{{ card.title }}</h2>
         <p class="card-text">{{ card.description }}</p>
         <div class="card-buttons">
-          <a :href="card.buttonLink1" class="card-button">{{
-            card.buttonText1
-          }}</a>
-          <div class="card-button-spacer"></div>
           <a :href="card.buttonLink2" class="card-button">{{
             card.buttonText2
+          }}</a>
+
+          <div class="card-button-spacer"></div>
+          <a :href="card.buttonLink1" class="card-button">{{
+            card.buttonText1
           }}</a>
         </div>
       </div>
@@ -31,9 +32,9 @@ export default defineComponent({
           description:
             "The fourth planet from the Sun and the second-smallest planet in the Solar System.",
           imageUrl: "src/assets/PlanetPictures/Mars.jpeg",
-          buttonLink1: "https://en.wikipedia.org/wiki/Mars",
-          buttonText1: "More info",
-          buttonLink2: "https://www.example.com/mars-tickets",
+          buttonLink1: "MarsPage",
+          buttonText1: "Read More",
+          buttonLink2: "TicketPage",
           buttonText2: "Book Tickets",
         },
         {
@@ -41,19 +42,19 @@ export default defineComponent({
           description:
             "The only natural satellite of Earth and the fifth largest moon in the Solar System.",
           imageUrl: "src/assets/PlanetPictures/Moon.jpeg",
-          buttonLink1: "https://en.wikipedia.org/wiki/Moon",
-          buttonText1: "More info",
-          buttonLink2: "https://www.example.com/moon-tickets",
+          buttonLink1: "MoonPage",
+          buttonText1: "Read More",
+          buttonLink2: "TicketPage",
           buttonText2: "Book Tickets",
         },
         {
-          title: "Kepler-442b",
+          title: "Kepler-22b",
           description:
-            "A confirmed exoplanet about 1,206 light-years away from Earth in the constellation Lyra.",
-          imageUrl: "src/assets/PlanetPictures/Kepler-442b.jpeg",
-          buttonLink1: "https://en.wikipedia.org/wiki/Kepler-442b",
-          buttonText1: "More info",
-          buttonLink2: "https://www.example.com/kepler-442b-tickets",
+            "The super-Earth at 2.4 times the size of earth, that could be covered in a super ocean.",
+          imageUrl: "src/assets/PlanetPictures/Kepler-442b_2.jpeg",
+          buttonLink1: "KeplerPage",
+          buttonText1: "Read More",
+          buttonLink2: "TicketPage",// fixed button links to ticket page
           buttonText2: "Book Tickets",
         },
       ],
@@ -64,20 +65,27 @@ export default defineComponent({
 
 <style scoped>
 .card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 960px;
-  margin: 0 auto;
+  max-width: 1100px;
+  padding: 30px;
+  display: grid;
+  margin: 10px auto;
+  list-style: none;
+  grid-gap: 60px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
+  overflow: hidden;
 }
 
 .card {
-  width: 30%;
-  margin-bottom: 20px;
+  margin: 40px 0 10px 0;
+  max-width: 280px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  border-radius: 15px;
   overflow: hidden;
   transition: transform 0.2s;
+  background-color: transparent;
+  box-shadow: 0 0 2rem -0.5rem white;
+  color: white;
 }
 
 .card:hover {
@@ -99,6 +107,7 @@ export default defineComponent({
   margin: 0;
   font-size: 24px;
   font-weight: bold;
+  text-align: center;
 }
 
 .card-text {
@@ -108,15 +117,16 @@ export default defineComponent({
 
 .card-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 6px;
   align-items: center;
   margin-top: 10px;
 }
 
 .card-button {
   display: inline-block;
-  padding: 10px 20px;
-  background-color: #333;
+  padding: 6px 12px;
+  background-color: #1a1a1a;
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
